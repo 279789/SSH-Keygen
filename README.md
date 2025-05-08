@@ -103,11 +103,11 @@ ssh -i ~/.ssh/<filename_of_your_key> <username>@<host>
 ```
 
 ## 3) Questions
-1. What is the advantage of asymmetric cryptography compared to symmetric cryptography?
-2. Why should private keys never be shared?
-3. Explain in your own words how a server verifies a client’s signature using asymmetric cryptography.
-4. If someone gets access to your public key, can they decrypt your messages? Why or why not?
-5. Why is it advisable to use different keys for different services or servers?
+1. What is the advantage of asymmetric cryptography compared to symmetric cryptography? The main advantage between asymmetric cryptography  is, that asymmetric cryptography uses two keys. A Public and a Private Key, the Public key is put on to the host and the private key sit's on the Client, if the public key gets accidently shown  to a third person (hacker), they are not able to acces the Server. The private key stays on the client, so there is also no risk of loosing it.(If only the user has access to the private key. Symmetric cryptography uses only one key, that is used to encrypt and decrypt the massage, so if someone get's the key, they're able to use the communication channal. That wouldn't be nice.
+2. Why should private keys never be shared? A private key shauld never be shared, because if someone unintentionally get's the key, they could use it also to communicate "save" to the host and making a lot of mess there.
+3. Explain in your own words how a server verifies a client’s signature using asymmetric cryptography. When reseaving a message the Server first calculates a valuble (with a mathematical function) of the Message. At this step the values of the message and the signed Hashnumber should not be the same. By appling the Public key to the Message, the value of the Signed value and the Message shauld be the same. If they're the same, you are verified
+4. If someone gets access to your public key, can they decrypt your messages? Why or why not? Not at all, at ssh the public key is only for the access verification, if someone has my public key, he maybe would be able to calculate the value of the signed Hash and compare them, but he wouldn't be able to calculate my private key, to verify to the host.
+5. Why is it advisable to use different keys for different services or servers? If you use one key for all off your servers, you are risking that if someone gets your key he has access to all of your servers. Altlthough the encryption method is very save , it's not impossible that someone decrypts your key, if you have other keys for each server, that wouldn't be  a big problem, but if the decrypter has access to all of your systems, you are fucked.
 
 ## 4) Advice
 If you want to dive more into security-engineering, set up a virtual machine for yourself and play around with _KALI_-Linux. 
